@@ -54,7 +54,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Posts::findOrfail($id);
+        return view('posts.show',compact('post'));
     }
 
     /**
@@ -65,7 +66,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Posts::findOrfail($id);
+        return view('posts.edit',compact('post'));
     }
 
     /**
@@ -77,7 +79,22 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+
+            'title' => 'required',
+            'body' => 'required'
+
+       ]);
+
+       $post = array(
+        'title' => $request->title,
+        'body' => $request->body,
+      
+       );
+
+       Posts::whereId($id)->update($post);
+      // return view('posts.index',compact('post'));
+      return redirect()->route('posts.index')->with('success', 'Successfully Updated');
     }
 
     /**
@@ -88,6 +105,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $post = POSTS::findOrfail($id);
+       $post->delete();
+      
+       return redirect()->route('posts.index');
+      
     }
 }

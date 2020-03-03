@@ -40,7 +40,11 @@
             <td>{{$posts->updated_at}}</td>
 
             <td>
+                
                 <form action ="{{route('posts.destroy', $posts->id)}}" method="post">
+                   
+                    @method('DELETE')
+                    @csrf
                     <button type ="submit" class="btn btn-danger btn-sm">Delete</button>
                     <a href="{{route('posts.show', $posts->id)}}" class="btn btn-warning btn-sm">Show</a>
                     <a href="{{route('posts.edit', $posts->id)}}" class="btn btn-info btn-sm">Edit</a>

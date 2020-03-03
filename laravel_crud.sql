@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2020 at 07:05 PM
+-- Generation Time: Mar 03, 2020 at 04:53 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -60,10 +60,8 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `body`, `created_at`, `updated_at`) VALUES
-(1, 'Laravel Crud', 'sample crud in laravel', '2020-02-19 09:30:56', '2020-02-19 09:30:56'),
-(2, 'Laravel Crud', 'sample crud in laravel', '2020-02-19 09:35:13', '2020-02-19 09:35:13'),
-(3, 'Crud in Laravel', 'First laravel app', '2020-02-19 10:00:33', '2020-02-19 10:00:33'),
-(4, 'alex', 'test1', '2020-02-19 10:02:02', '2020-02-19 10:02:02');
+(1, 'Laravel Crud11', 'sample crud in laravel', '2020-02-19 09:30:56', '2020-03-02 19:21:54'),
+(10, 'coco', 'nutnut', '2020-03-02 19:40:38', '2020-03-02 19:40:38');
 
 -- --------------------------------------------------------
 
@@ -118,7 +116,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`

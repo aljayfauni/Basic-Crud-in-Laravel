@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\posts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -14,8 +15,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $post = Posts::all();
-        return view('posts.index',compact('post'));
+        $post = DB::table('posts')->paginate(3);
+        return view('posts.index',['post' => $post]);
     }
 
     /**
@@ -52,6 +53,13 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+   
+
+
+
+    
+
     public function show($id)
     {
         $post = Posts::findOrfail($id);
@@ -105,10 +113,32 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-       $post = POSTS::findOrfail($id);
+       $post = Posts::findOrfail($id);
        $post->delete();
       
        return redirect()->route('posts.index');
       
     }
+
+
+    public function search(Request $request)
+    
+    {
+        $search = $request->get('search');
+        $post = DB::table('posts')->where ('title', 'like', '%'.$search.'%')->paginate(3);
+   
+        return view('posts.index', ['post' => $post]);
+      
+
+    }
+
+/**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+
+   
 }

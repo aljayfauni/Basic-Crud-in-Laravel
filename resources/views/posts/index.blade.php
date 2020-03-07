@@ -15,12 +15,34 @@
     <div class="col-sm-8" style="margin:0 auto;">
     
 <table class="table table-bordered">
-    <div class="" style="float:right;margin:7px;">
-        <a href="{{route('posts.create')}}" class="btn btn-success btn-m align-right">Add New</a>
-        </div>
+
+   
+
+
+   
+
+            
+            <form action="/search" method="get">
+                @csrf
+                @method('GET')
+              
+                <div class="input-group" >
+                
+                <input type="text" name="search" class="form-control">
+                </div>
+                <span class="input-group-prepend">
+                <button type="submit"  class="btn btn-primary" >Search</button>
+                </span>
+            </form>
+         
+      
+
+        <div class="" style="float:right;margin:7px;">
+            <a href="{{route('posts.create')}}" class="btn btn-success btn-m align-right">Add New</a>
+            </div>
     <tr>
-        <th with="80px">No</th>
-        
+        <!--<th with="80px">No</th>-->
+        <th>ID</th>
         <th>Title</th>
         <th>Body</th>
         <th>Date Created</th>
@@ -32,8 +54,8 @@
     @foreach ($post as $key => $posts)
         <tr>
 
-            <td>{{++$key}}</td>
-            
+            <!--<td>{{++$key}}</td>-->
+            <td>{{$posts->id}}</td>
             <td>{{$posts->title}}</td>
             <td>{{$posts->body}}</td>
             <td>{{$posts->created_at}}</td>
@@ -52,14 +74,16 @@
             </td>
 
         </tr>
+      
     @endforeach
 
 
     </table>
+    {{ $post->links() }}
 
 </div>
 
 </div>
- 
+
 
 @endsection

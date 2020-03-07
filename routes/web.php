@@ -12,14 +12,20 @@
 */
 
 use App\Http\Controllers\PostsController;
-
+use illuminate\Support\Facades\Input;
 //Route::get('/', function () {
    // return view('welcome');
  
 //});
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/', 'PostsController@index');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/search', 'PostsController@search');
 Route::resource('posts','PostsController');
+
+
+
+
+
+

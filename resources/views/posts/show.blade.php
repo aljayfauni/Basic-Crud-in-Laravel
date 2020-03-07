@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Register ') }}</div>
 
                 <div class="card-body">
+                    
                     <form method="POST" action="{{route('posts.store')}}">
                         @csrf
 
@@ -25,11 +26,9 @@
                             <div class="col-md-6">
                                 {{$post->body}}
                             </div>
-
+                            <a href="{{route('posts.index')}}" class="btn btn-warning btn-m">Back</a>
                                 
-                        <div class="form-group row mb-0">
-                       
-                        </div>
+                   
                     </form>
                 </div>
             </div>

@@ -5,37 +5,32 @@
     <div class="col-sm-12">
         <div class="pull-left">
             <center>
-            <h2>Basic Crud App Laravel </h2>
+            <h2>Simple Crud App Laravel </h2><br/>
             </center>
         </div>
     </div>
 </div>
 <div class="row">
-    
+
     <div class="col-sm-8" style="margin:0 auto;">
-    
+
+
+
+        <form action="/search" method="get">
+
+            @method('GET')
+            @csrf
+
+            <div class="input-group align-center col-m-6 " >
+
+            <input type="search" name="search" placeholder="Search..." class="form-control col-sm-3 align-center" >
+            <input type="submit" class="btn btn-primary btn-m align-left" value="Search"/>
+            </div>
+
+        </form>
+
+
 <table class="table table-bordered">
-
-   
-
-
-   
-
-            
-            <form action="/search" method="get">
-                @csrf
-                @method('GET')
-              
-                <div class="input-group" >
-                
-                <input type="text" name="search" class="form-control">
-                </div>
-                <span class="input-group-prepend">
-                <button type="submit"  class="btn btn-primary" >Search</button>
-                </span>
-            </form>
-         
-      
 
         <div class="" style="float:right;margin:7px;">
             <a href="{{route('posts.create')}}" class="btn btn-success btn-m align-right">Add New</a>
@@ -48,8 +43,6 @@
         <th>Date Created</th>
         <th>Date Updated</th>
         <th>Action</th>
-  
-        
     </tr>
     @foreach ($post as $key => $posts)
         <tr>
@@ -62,9 +55,9 @@
             <td>{{$posts->updated_at}}</td>
 
             <td>
-                
+
                 <form action ="{{route('posts.destroy', $posts->id)}}" method="post">
-                   
+
                     @method('DELETE')
                     @csrf
                     <button type ="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -74,16 +67,11 @@
             </td>
 
         </tr>
-      
     @endforeach
-
-
     </table>
     {{ $post->links() }}
 
 </div>
-
 </div>
-
 
 @endsection

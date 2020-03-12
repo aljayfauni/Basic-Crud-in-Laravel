@@ -119,23 +119,29 @@ class PostsController extends Controller
        return redirect()->route('posts.index');
       
     }
-
+/**
+    
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
 
     public function search(Request $request)
     
     {
         $search = $request->get('search');
-        $post = DB::table('posts')->where ('title', 'like', '%'.$search.'%')->paginate(3);
+        $post = DB::table('posts')->where('title','like','%'.$search.'%')->paginate(3);
    
-        return view('posts.index', ['post' => $post]);
+        return view('posts.index',['post' => $post]);
+       
       
 
     }
 
 /**
-     * Remove the specified resource from storage.
+    
      *
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
 
